@@ -8,7 +8,7 @@ export default function App() {
 
   const fetchTableNames = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/get-table-names");
+      const response = await axios.get("http://localhost:3306/");
       console.log(response.data);
       setTableNames(response.data.join(", ")); // 取得したデータをステートに設定
     } catch (error) {
