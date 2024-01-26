@@ -1,18 +1,7 @@
 import "./styles.css";
 
-import React from 'react';
-import axios from 'axios';
-
-export default function App() {
-  const fetchTableNames = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/get-table-names');
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error fetching table names', error);
-    }
-  }
-};
+import React from "react";
+import axios from "axios";
 
 export default function App() {
   return (
@@ -21,7 +10,7 @@ export default function App() {
         <button
           className="btn btn-success d-flex justify-content-center align-items-center m-3"
           style={{ height: "50px", width: "200px" }}
-          onClick={fetchTableNames}
+          // onClick={fetchTableNames}
         >
           ABSOLUTES
         </button>
