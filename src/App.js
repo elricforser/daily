@@ -1,15 +1,19 @@
 import "./styles.css";
 
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 export default function App() {
+  const [tableNames, setTableNames] = useState(""); // ステートを追加
+
   const fetchTableNames = async () => {
     try {
       const response = await axios.get("http://localhost:3001/get-table-names");
       console.log(response.data);
+      setTableNames(response.data.join(", ")); // 取得したデータをステートに設定
     } catch (error) {
       console.error("Error fetching table names", error);
+      setTableNames("データの取得に失敗しました"); // エラーメッセージをステートに設定
     }
   };
 
@@ -29,7 +33,7 @@ export default function App() {
           className="bg-success text-light d-flex justify-content-center align-items-center"
           style={{ height: "50px", width: "200px" }}
         >
-          LOGO CENTER
+          {tableNames || "LOGO CENTER"} {/* ステートを表示 */}
         </div>
         <span className="d-flex justify-content-center text-light">
           Click and Log in
@@ -38,3 +42,4 @@ export default function App() {
     </div>
   );
 }
+
